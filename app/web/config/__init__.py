@@ -14,3 +14,7 @@ class Config:
         "task_ignore_result": True,
         "broker_connection_retry_on_startup": False,
     }
+    AWS_S3_REGION = os.environ["AWS_S3_REGION"]
+    AWS_S3_ACCESS_KEY = os.environ["AWS_S3_ACCESS_KEY"]
+    AWS_S3_SECRET_ACCESS_KEY = os.environ["AWS_S3_SECRET_ACCESS_KEY"]
+    AWS_S3_BUCKET_NAME = os.environ["AWS_S3_BUCKET_NAME"]
