@@ -18,3 +18,21 @@ def devworker(ctx):
         pty=os.name != "nt",
         env={"APP_ENV": "development"},
     )
+
+
+@task
+def run_local_postgres(ctx):
+    ctx.run(
+        "docker-compose up -d",
+        pty=os.name != "nt",
+        env={"APP_ENV": "development"},
+    )
+
+
+@task
+def init_db(ctx):
+    ctx.run(
+        "flask --app app.web init-db",
+        pty=os.name != "nt",
+        env={"APP_ENV": "development"},
+    )
