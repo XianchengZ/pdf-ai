@@ -12,6 +12,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_DB=${POSTGRES_DB}
+
   pgadmin:
     image: dpage/pgadmin4
     environment:
@@ -22,6 +23,26 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin
 
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/data
+
+  redis_insight:
+    image: redislabs/redisinsight
+    container_name: redis_insight
+    restart: always
+    ports:
+      - '8001:8001'
+    volumes:
+      - redis_insight_volume_data:/db
+
 volumes:
   pgadmin-data:
   pgdata:
+  redis:
+  redis_insight_volume_data:
