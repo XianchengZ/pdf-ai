@@ -21,7 +21,7 @@ def devworker(ctx):
 
 
 @task
-def run_local_postgres(ctx):
+def run_local_infra(ctx):
     ctx.run(
         "docker-compose up -d",
         pty=os.name != "nt",
